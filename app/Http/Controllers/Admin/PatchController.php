@@ -51,19 +51,26 @@ class PatchController extends Controller
     {
         $this->validate($request, [
             'version_id'=>'required',
-            'url'=>'required',
-            'info'=>'required'
+            'file'=>'required'
         ]);
 
+        if(!$request->hasFile('file')) {
+            return $this->error('文件上传失败');
+        }
+
         $patch = new Patch;
+
+        if(!$patch->setPatchFile($request->file('file'))){
+            return $this->error('文件上传失败');
+        }
+
         $patch->version_id = $request->get('version_id');
-        $patch->url = $request->get('url');
         $patch->info = $request->get('info');
 
         if ($patch->save()) {
             return $this->success('添加成功');
         } else {
-            return $this->success('添加失败');
+            return $this->error('添加失败');
         }
     }
 
@@ -98,15 +105,13 @@ class PatchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'version_id'=>'required',
-            'url'=>'required',
-            'info'=>'required'
-        ]);
-
         $patch = Patch::findOrFail($id);
-        $patch->version_id = $request->get('version_id');
-        $patch->url = $request->get('url');
+
+        $file = $request->file('file');
+        if($file && !$patch->setPatchFile($file)){
+            return $this->error('文件上传失败');
+        }
+
         $patch->info = $request->get('info');
 
         if ($patch->save()) {
