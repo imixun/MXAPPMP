@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-//use App\Http\Controllers\Admin\Controller;
 
 use App\Version;
 
@@ -16,24 +15,6 @@ class VersionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index1(Request $request)
-    {
-        $filter = $request->get('filter');
-
-        $db = DB::table('versions')
-            ->select('apps.name as app_name', 'versions.id', 'versions.code', 'versions.index', 'versions.created_at')
-            ->leftJoin('apps', 'apps.id', '=', 'versions.app_id')
-            ->whereNull('versions.deleted_at');
-        //$db->where();
-
-        $data = $db->paginate(10);
-
-        $data1 = Version::whereRaw("code like '%{$filter}%'")
-            ->orderBy('created_at','desc')
-            ->paginate(10);
-
-        return view('admin.version.index')->withVersions($data);
-    }
     public function index(Request $request,$app_id)
     {
         $filter = $request->get('filter');
@@ -47,7 +28,9 @@ class VersionController extends Controller
             $db->where('versions.code','like',"%{$filter}%");
         }
 
-        $data = $db->paginate(10);
+        $data = $db
+            ->orderBy('versions.created_at','desc')
+            ->paginate(10);
 
         return view('admin.version.index')->withApp(\App\App::findOrFail($app_id))->withVersions($data);
     }

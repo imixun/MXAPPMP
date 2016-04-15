@@ -14,11 +14,11 @@
                             <label class="col-md-4 control-label">账号</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control" name="user_name" value="{{ old('user_name') }}">
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('user_name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('user_name') }}</strong>
                                     </span>
                                 @endif
                             </div>

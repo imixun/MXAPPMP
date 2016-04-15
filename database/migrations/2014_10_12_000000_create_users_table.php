@@ -13,13 +13,23 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password', 60);
-            $table->rememberToken();
+            $table->increments('id')->comment('ID');
+            $table->string('user_name',60)->comment('用户名');
+            $table->string('name')->nullable()->comment('名字');
+            $table->string('email')->unique()->comment('邮箱');
+            $table->string('password', 60)->comment('密码');
+            $table->string('api_token',100)->nullable()->comment('手机端api保持登录');
+            $table->rememberToken()->comment('web端记住登录');
             $table->timestamps();
+            $table->softDeletes();
         });
+
+        DB::table('Users')->insert([
+            'user_name' => 'admin',
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('123456'),
+        ]);
     }
 
     /**

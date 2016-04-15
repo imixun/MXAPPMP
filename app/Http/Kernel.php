@@ -30,10 +30,11 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
         ],
-
+        /*
         'api' => [
             'throttle:60,1',
         ],
+        */
     ];
 
     /**
@@ -49,12 +50,13 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-        /*
-         * RBAC
-         */
+        /* RBAC */
         'entrust' => \App\Http\Middleware\Entrust::class,
         'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+
+        /* api */
+        'api' => \App\Http\Middleware\Api::class
     ];
 }

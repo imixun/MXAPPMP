@@ -161,6 +161,7 @@ return [
          */
         Zizaco\Entrust\EntrustServiceProvider::class,
 
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*

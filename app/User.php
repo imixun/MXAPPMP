@@ -9,6 +9,9 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 class User extends Authenticatable
 {
     use EntrustUserTrait;
+
+    protected $dates = ['deleted_at'];
+
     /**
      * The attributes that are mass assignable.
      *

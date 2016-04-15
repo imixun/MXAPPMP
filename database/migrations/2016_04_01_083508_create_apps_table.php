@@ -14,8 +14,8 @@ class CreateAppsTable extends Migration
     {
         Schema::create('apps', function(Blueprint $table)
         {
-            $table->increments('id');
-            $table->string('name');
+            $table->increments('id')->comment('ID');
+            $table->string('name')->comment('应用名称');
             $table->timestamps();
             $table->softDeletes();
         });

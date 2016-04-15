@@ -20,7 +20,6 @@ class Patch extends Model
 
         $extension = $file->getClientOriginalExtension();
 
-        //$upload_path = base_path().'/public/uploads/patch/';
         $upload_path = './uploads/patch/';
         $file = $file->move($upload_path,uniqid().'.'.$extension);
 
@@ -40,6 +39,7 @@ class Patch extends Model
         unlink($file_url);
 
         $this->url = substr($zip_url,1);
+        $this->url = url($this->url);
         $this->md5 = md5_file($zip_url);
 
         /* rsa 加密 md5 值*/
