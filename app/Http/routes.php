@@ -61,15 +61,10 @@ Route::group(['middleware' => ['web','auth','entrust'],'namespace' => 'Admin','p
 });
 
 /* Api模块 */
-Route::group(['namespace' => 'Api','prefix' => 'api','as' => 'Api::'], function () {
+Route::group(['middleware' => ['api_filter'],'namespace' => 'Api','prefix' => 'api','as' => 'Api::'], function () {
 
-    /* 登录 */
-    Route::post('login', 'LoginController@index');
-
-
-    Route::group(['middleware' => ['api']], function () {
-        Route::get('version', 'VersionController@getLastVersion');
-    });
+    /* 获取版本及补丁 */
+    Route::get('app/updateInfo', 'AppController@getUpdateInfo');
 
 });
 

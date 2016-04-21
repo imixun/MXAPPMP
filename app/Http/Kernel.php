@@ -30,11 +30,11 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
         ],
-        /*
+
         'api' => [
             'throttle:60,1',
         ],
-        */
+
     ];
 
     /**
@@ -56,7 +56,7 @@ class Kernel extends HttpKernel
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
 
-        /* api */
-        'api' => \App\Http\Middleware\Api::class
+        /* api 过滤器 */
+        'api_filter' => \App\Http\Middleware\ApiFilter::class
     ];
 }

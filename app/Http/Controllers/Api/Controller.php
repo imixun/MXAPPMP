@@ -29,9 +29,9 @@ class Controller extends BaseController
 
         foreach ($cfg as $k => $v) {
             $p = Request::get($k);
-            if ($p === null) {
+            if ($p === null || $p === '') {
                 if (is_array($v) && isset($v['need'])) {
-                    self::apiReturn(ReturnCodeController::ERR_0105, "缺少参数[" . $k . "]!");
+                    return self::apiReturn(ReturnCodeController::ERR_0105, "缺少参数[" . $k . "]!");
                 }
                 continue;
             }
@@ -41,7 +41,7 @@ class Controller extends BaseController
             }
 
             if (isset($v['r']) && ((isset($v['r']['min']) && $p < $v['r']['min']) || (isset($v['r']['max']) && $p > $v['r']['max']))) {
-                self::apiReturn(ReturnCodeController::ERR_0106, "参数[" . $k . "]范围有误!");
+                return self::apiReturn(ReturnCodeController::ERR_0106, "参数[" . $k . "]范围有误!");
             }
             $data[$v['k']] = $p;
         }

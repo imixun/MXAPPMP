@@ -18,13 +18,12 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable()->comment('名字');
             $table->string('email')->unique()->comment('邮箱');
             $table->string('password', 60)->comment('密码');
-            $table->string('api_token',100)->nullable()->comment('手机端api保持登录');
             $table->rememberToken()->comment('web端记住登录');
             $table->timestamps();
             $table->softDeletes();
         });
 
-        DB::table('Users')->insert([
+        DB::table('users')->insert([
             'user_name' => 'admin',
             'name' => 'admin',
             'email' => 'admin@admin.com',

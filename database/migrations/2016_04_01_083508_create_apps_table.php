@@ -16,6 +16,8 @@ class CreateAppsTable extends Migration
         {
             $table->increments('id')->comment('ID');
             $table->string('name')->comment('应用名称');
+            $table->string('app_key',32)->comment('app key')->unique();
+            $table->string('app_secret',32)->comment('app secret');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 use App\App;
 use Redirect;
 
@@ -35,6 +35,8 @@ class AppController extends Controller
 
         $app = new App;
         $app->name = $request->get('name');
+        $app->app_key = uniqid() . strtolower(Str::random(5));
+        $app->app_secret = md5($app->name . Str::random(20));
 
         if ($app->save()) {
             return Redirect::to(action('Admin\AppController@index'));

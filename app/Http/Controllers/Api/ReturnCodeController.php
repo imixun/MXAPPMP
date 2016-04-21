@@ -27,10 +27,12 @@ class ReturnCodeController {
 
     //公共部分
     const ERR_0101 = '-101';//验证错误
-    const ERR_0102 = '-102';//缺失token
-    const ERR_0103 = '-103';//您没有该操作权限
-    const ERR_0105 = '-105';//缺少参数
-    const ERR_0106 = '-106';//参数范围有误
+    const ERR_0102 = '-102';//您没有该操作权限
+    const ERR_0103 = '-103';//参数范围有误
+    const ERR_0104 = '-104';//缺少参数
+    const ERR_0105 = '-105';//缺失app_key
+    const ERR_0106 = '-106';//缺失nonce
+    const ERR_0107 = '-107';//缺失signature
 
     //用户部分
     const ERR_0200 = '-200';//账号或密码错误
@@ -56,10 +58,12 @@ class ReturnCodeController {
 
         //公共部分
         ReturnCodeController::ERR_0101 => 'signature is wrong！',
-        ReturnCodeController::ERR_0102 => 'missing token！',
-        ReturnCodeController::ERR_0103 => '您的账号没有该操作权限！',
-        ReturnCodeController::ERR_0105 => '缺少参数！',
-        ReturnCodeController::ERR_0106 => '参数范围有误！',
+        ReturnCodeController::ERR_0102 => 'access denied！',
+        ReturnCodeController::ERR_0103 => '参数范围有误！',
+        ReturnCodeController::ERR_0104 => '缺少参数！',
+        ReturnCodeController::ERR_0105 => '缺失app_key！',
+        ReturnCodeController::ERR_0106 => '缺失nonce！',
+        ReturnCodeController::ERR_0107 => '缺失signature！',
 
         //用户部分
         ReturnCodeController::ERR_0200 => '账号或密码错误',

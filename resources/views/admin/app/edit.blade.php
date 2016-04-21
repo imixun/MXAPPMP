@@ -25,6 +25,22 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-4 control-label">APP KEY</label>
+
+                            <div class="col-md-6">
+                                <p class="form-control-static">{{ $app->app_key }}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">APP SECRET</label>
+
+                            <div class="col-md-6">
+                                <p class="form-control-static">{{ $app->app_secret }}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in"></i>保存
