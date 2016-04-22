@@ -27,8 +27,11 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i>添加
+                                    添加
                                 </button>
+                                <a href="/admin/app" class="btn btn-default">
+                                    返回
+                                </a>
                             </div>
                         </div>
                     </form>

@@ -12,7 +12,7 @@
                 </div>
                 <div class="panel-body">
 
-                    <form class="form-horizontal" action="/admin/patch" enctype="multipart/form-data" role="form" method="POST">
+                    <form class="form-horizontal" action="/admin/app/{{ $app->id }}/version/{{ $version->id }}/patch" enctype="multipart/form-data" role="form" method="POST">
                         {!! csrf_field() !!}
 
                         <input type="hidden" name="version_id" value="{{ $version->id }}" >
@@ -53,8 +53,11 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i>添加
+                                    添加
                                 </button>
+                                <a href="/admin/patch" class="btn btn-default">
+                                    返回
+                                </a>
                             </div>
                         </div>
                     </form>

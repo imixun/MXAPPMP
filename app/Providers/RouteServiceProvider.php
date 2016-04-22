@@ -40,5 +40,10 @@ class RouteServiceProvider extends ServiceProvider
         $router->group(['namespace' => $this->namespace], function ($router) {
             require app_path('Http/routes.php');
         });
+
+        /* 后台模块 */
+        $router->group(['middleware' => ['web','auth','entrust'],'namespace' => 'App\Http\Controllers\Admin','prefix' => 'admin','as' => 'admin::'], function ($router) {
+            require app_path('Http/routes_admin.php');
+        });
     }
 }

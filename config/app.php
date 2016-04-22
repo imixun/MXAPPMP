@@ -155,12 +155,12 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\EndaPjaxServiceProvider::class, //pjax
 
-        /*
-         * RBAC
-         */
+        /* RBAC */
         Zizaco\Entrust\EntrustServiceProvider::class,
 
+        /* debugbar */
         Barryvdh\Debugbar\ServiceProvider::class,
     ],
 

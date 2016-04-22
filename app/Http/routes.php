@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function (){
-    return view('welcome');
-    //return redirect()->action('Admin\AppController@index');
+    //return view('welcome');
+    return redirect()->action('Admin\AppController@index');
 });
 /*
 |--------------------------------------------------------------------------
@@ -25,40 +25,6 @@ Route::get('/', function (){
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-/* 后台模块 */
-Route::group(['middleware' => ['web','auth','entrust'],'namespace' => 'Admin','prefix' => 'admin','as' => 'admin::'], function () {
-
-    /* 应用管理 */
-//    Route::get('app', 'AppController@index');
-//    Route::get('app/add', 'AppController@add');
-//    Route::post('app/add', 'AppController@postAdd');
-//    Route::get('app/{app}/edit','AppController@edit');
-//    Route::post('app/{app}/edit','AppController@postEdit');
-//    Route::post('app/{app}/delete','AppController@delete');
-
-    Route::resource('app','AppController',[
-        'except' => ['show']
-    ]);
-
-    /* 版本管理*/
-    Route::get('app/{app}/version', 'VersionController@index');
-    Route::get('app/{app}/version/create', 'VersionController@create');
-    Route::post('app/{app}/version', 'VersionController@store');
-    Route::get('app/{app}/version/{version}/edit', 'VersionController@edit');
-    Route::put('app/{app}/version/{version}', 'VersionController@update');
-    Route::delete('app/{app}/version/{version}', 'VersionController@destroy');
-
-//    Route::resource('version','VersionController',[
-//        'except' => ['show']
-//    ]);
-
-    /* 补丁管理 */
-    Route::get('app/{app}/version/{version}/patch', 'PatchController@index');
-
-    Route::resource('patch','PatchController', [
-        'only' => ['index', 'update','store']
-    ]);
-});
 
 /* Api模块 */
 Route::group(['middleware' => ['api_filter'],'namespace' => 'Api','prefix' => 'api','as' => 'Api::'], function () {

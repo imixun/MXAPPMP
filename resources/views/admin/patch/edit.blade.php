@@ -11,7 +11,7 @@
                     <span class="label label-success">{{ $version->code }} - {{ $version->index }}</span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="/admin/patch/{{ $patch->id }}" enctype="multipart/form-data" role="form" method="POST">
+                    <form class="form-horizontal" action="/admin/app/{{ $app->id }}/version/{{ $version->id }}/patch/{{ $patch->id }}" enctype="multipart/form-data" role="form" method="POST">
                         {!! csrf_field() !!}
                         {!! method_field('put') !!}
 
@@ -51,8 +51,11 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i>编辑
+                                    编辑
                                 </button>
+                                <a href="/admin/app/{{ $app->id }}/version" class="btn btn-default">
+                                    返回
+                                </a>
                             </div>
                         </div>
                     </form>
