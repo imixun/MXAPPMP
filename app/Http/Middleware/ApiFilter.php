@@ -40,7 +40,7 @@ class ApiFilter
         }
 
         //验证签名
-        if(md5($app->id . $app->secret . $nonce) != $signature){
+        if(md5($app->id . $app->app_secret . $nonce) != $signature){
             return Controller::apiReturn(ReturnCodeController::ERR_0101);
         }
         return $next($request);
