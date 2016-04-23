@@ -47,7 +47,8 @@ class AppController extends Controller
         $current_patch = $current_version->patch;
         if($current_patch){
             $result['current_version_patch'] = [
-                'url' => $current_patch->url
+                'url' => $current_patch->url,
+                'md5_rsa' => $current_patch->md5_rsa
             ];
         }
 
@@ -71,8 +72,6 @@ class AppController extends Controller
                 ];
             }
         }
-
-
 
         return $this->apiReturn(ReturnCodeController::SUCCESS, '', $result);
     }
