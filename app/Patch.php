@@ -20,12 +20,14 @@ class Patch extends Model
 
         $extension = $file->getClientOriginalExtension();
 
+        $uniqid = uniqid();
+
         $upload_path = './uploads/patch/';
-        $file = $file->move($upload_path,uniqid().'.'.$extension);
+        $file = $file->move($upload_path,$uniqid.'.'.$extension);
 
         $file_url = $file->getPathname();
 
-        $zip_url = $upload_path.uniqid().'.zip';
+        $zip_url = $upload_path.$uniqid.'.zip';
 
         //压缩js文件为.zip包
         $pcl_zip = new \App\Library\PclZip($zip_url);
