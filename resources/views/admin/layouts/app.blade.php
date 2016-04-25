@@ -90,6 +90,22 @@
 
     <div id="main_content">
     @yield('content')
+
+    <script type="text/javascript">
+        $('.obj_delete').click(function(){
+            var modal = $('#layouts_modal');
+            modal.find('.modal-title').html('警告');
+            modal.find('.modal-body').html($(this).attr('data-tip'));
+            modal.find('.modal-form').append('{!! method_field('delete') !!}{!! csrf_field() !!}')
+                    .append()
+                    .attr('action',$(this).attr('data-url'));
+            modal.find('.submit_button').one('click',function(){
+                modal.find('form').submit();
+            });
+            modal.modal('show');
+        })
+    </script>
+    @yield('script')
     </div>
     <!-- Modal -->
     <div class="modal fade" id="layouts_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -133,20 +149,6 @@
             });
         });
     </script>
-    <script type="text/javascript">
-        $('.obj_delete').click(function(){
-            var modal = $('#layouts_modal');
-            modal.find('.modal-title').html('警告');
-            modal.find('.modal-body').html($(this).attr('data-tip'));
-            modal.find('.modal-form').append('{!! method_field('delete') !!}{!! csrf_field() !!}')
-                    .append()
-                    .attr('action',$(this).attr('data-url'));
-            modal.find('.submit_button').one('click',function(){
-                modal.find('form').submit();
-            });
-            modal.modal('show');
-        })
-    </script>
-    @yield('script')
+
 </body>
 </html>
