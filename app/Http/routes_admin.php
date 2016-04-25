@@ -5,6 +5,9 @@
 | 后台模块
 |--------------------------------------------------------------------------
 */
+/* 用户个人 */
+$this->get('user/change_password', 'UserController@showChangePasswordForm');
+$this->post('user/change_password', 'UserController@changePassword');
 
 /* 应用管理 */
 Route::resource('app','AppController',[

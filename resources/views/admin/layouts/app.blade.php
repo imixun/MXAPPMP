@@ -66,6 +66,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/admin/user/change_password') }}"><i class="fa fa-btn fa-sign-out"></i>Change Password</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
@@ -86,8 +87,10 @@
             <strong>Whoops!</strong> {{ session('message_error') }}
         </div>
     @endif
-    @yield('content')
 
+    <div id="main_content">
+    @yield('content')
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="layouts_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -120,7 +123,7 @@
     <script>
         $(document).ready(function()
         {
-            $(document).pjax('a', 'body');
+            $(document).pjax('a', '#main_content');
 
             $(document).on('pjax:start', function() {
                 NProgress.start();

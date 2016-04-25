@@ -68,7 +68,8 @@ class AppController extends Controller
             $last_version_patch = $last_version->patch;
             if($last_version_patch){
                 $result['last_version_patch'] = [
-                    'url' => $last_version_patch->url
+                    'url' => $last_version_patch->url,
+                    'md5_rsa' => $last_version_patch->md5_rsa
                 ];
             }
         }
